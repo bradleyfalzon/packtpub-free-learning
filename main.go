@@ -2,18 +2,12 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 )
 
 func main() {
-	doc, err := goquery.NewDocument("https://www.packtpub.com/packt/offers/free-learning")
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	title := doc.Find("h2").First().Text()
-	fmt.Println(strings.Trim(title, "\n\t"))
+	doc, _ := goquery.NewDocument("https://www.packtpub.com/packt/offers/free-learning")
+	fmt.Println(strings.Trim(doc.Find("h2").First().Text(), "\n\t"))
 }
